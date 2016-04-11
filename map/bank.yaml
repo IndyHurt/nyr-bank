@@ -13,7 +13,6 @@
 cameras:
     camera1:
         type: perspective
-        position: [37.5253, 127.0322, 16] # lon/lat for area in Seoul at zoom 16
 
 labels-global:
     - &text_visible_continent         true
