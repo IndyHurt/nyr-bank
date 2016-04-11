@@ -135,7 +135,6 @@ map = (function () {
                 popup.innerHTML = '<span class="labelInner">' + 'You found a(n) ' + mz_kind + ' to enhance!' + '</span><br>';
                 popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
                 popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
-                popup.style.visibility = 'visible';
             });
         });
     }
