@@ -8,7 +8,7 @@ New Year's Resolutions - Saving Money
 * Blog post - [index.html](index.html)
 * Small map for blog post - [map/embed.html](map/embed.html)
 * Big map - [map/index.html](map/index.html)
-* Scene file (powers the map) - [map/bank.yaml](map/bank.yaml#L697-L747)
+* Scene file (powers the map) - [map/bank.yaml](map/bank.yaml)
 * Map interactivity - [map/main.js](map/main.js)
 
 

@@ -20,6 +20,7 @@ map = (function () {
     // location is passed through url
     if (url_hash.length == 3) {
         var defaultpos = false;
+        console.log('hash:', url_hash);
         map_start_location = [url_hash[1],url_hash[2], url_hash[0]];
         // convert from strings
         map_start_location = map_start_location.map(Number);
@@ -107,17 +108,24 @@ map = (function () {
                 popup.style.left = (pixel.x + 0) + 'px';
                 popup.style.top = (pixel.y + 0) + 'px';
                 
-                if ( properties.kind == 'atm' || properties.kind == 'bank' ) 
+                if ( scene.selection.feature.properties.kind == 'atm' )
                 {
-	                popup.style.visibility = 'visible';
-                    popup.innerHTML = '<span class="labelInner">' + 'You found a bank or ATM to enhance!' + '</span><br>';
-                    popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
-                    popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
-	            }
+                    mz_kind = 'atm'
+                    popup.style.visibility = 'visible';
+                }  
+                if ( scene.selection.feature.properties.kind == 'bank' )
+                {
+                    mz_kind = 'bank'
+                    popup.style.visibility = 'visible';
+                }  
+                popup.innerHTML = '<span class="labelInner">' + 'You found a ' + mz_kind + 'to enhance' + '</span><br>';
+                popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
+                popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
             });
         });
 
         map.getContainer().addEventListener('mousedown', function (event) {
+            info.style.visibility = 'hidden';
             popup.style.visibility = 'hidden';
         });
     }
