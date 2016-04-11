@@ -6,8 +6,8 @@ map = (function () {
     // 'use strict';
 
     // defaults
-    var map_start_location = [0, 0, 2]; // world
-    var style_file = 'hotel.yaml';
+    var map_start_location = [37.5253, 127.0322, 16]; // lon/lat for area in Seoul at zoom 16
+    var style_file = 'bank.yaml';
 
     /*** URL parsing ***/
 
@@ -125,7 +125,6 @@ map = (function () {
         });
 
         map.getContainer().addEventListener('mousedown', function (event) {
-            info.style.visibility = 'hidden';
             popup.style.visibility = 'hidden';
         });
     }
