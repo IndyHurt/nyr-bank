@@ -118,7 +118,7 @@ map = (function () {
                     mz_kind = 'bank'
                     popup.style.visibility = 'visible';
                 }  
-                popup.innerHTML = '<span class="labelInner">' + 'You found a ' + mz_kind + 'to enhance' + '</span><br>';
+                popup.innerHTML = '<span class="labelInner">' + 'You found a ' + mz_kind + ' to enhance' + '</span><br>';
                 popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
                 popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
             });
