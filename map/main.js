@@ -108,33 +108,33 @@ map = (function () {
                 }                
                 var properties = selection.feature.properties;
 
-				var url = 'https://www.openstreetmap.org/edit?';
-				var position = '19' + '/' + latlng.lat + '/' + latlng.lng;
+                var url = 'https://www.openstreetmap.org/edit?';
+                var position = '19' + '/' + latlng.lat + '/' + latlng.lng;
 
-				if (properties.id) {
-					url += 'node=' + properties.id + '#map=' + position;
-				}
+                if (properties.id) {
+                    url += 'node=' + properties.id + '#map=' + position;
+                }
 
-				var josmUrl = 'http://www.openstreetmap.org/edit?editor=remote#map='+position;
+                var josmUrl = 'http://www.openstreetmap.org/edit?editor=remote#map='+position;
 
                 popup.style.width = 'auto';
                 popup.style.left = (pixel.x + 0) + 'px';
                 popup.style.top = (pixel.y + 0) + 'px';
                 var mz_kind = '';
                 
-                if ( scene.selection.feature.properties.kind == 'atm' )
+                if ( scene.selection.feature.properties.kind == 'atm' || scene.selection.feature.properties.kind == 'bank' )
                 {
-                    mz_kind = 'atm'
+                    if( scene.selection.feature.properties.kind == 'atm' ) {
+                        popup.innerHTML = '<span class="labelInner">' + 'You found an ATM to enhance!' + '</span><br>';
+                    } else {
+                        popup.innerHTML = '<span class="labelInner">' + 'You found a bank to enhance!' + '</span><br>';
+                    }  
+                    popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
+                    popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
                     popup.style.visibility = 'visible';
-                }  
-                if ( scene.selection.feature.properties.kind == 'bank' )
-                {
-                    mz_kind = 'bank'
-                    popup.style.visibility = 'visible';
-                }  
-                popup.innerHTML = '<span class="labelInner">' + 'You found a(n) ' + mz_kind + ' to enhance!' + '</span><br>';
-                popup.appendChild(createEditLinkElement(url, 'iD', 'Edit with iD ➹'));
-                popup.appendChild(createEditLinkElement(josmUrl, 'JOSM', 'Edit with JOSM ➹'));
+                } else {
+                    popup.style.visibility = 'hidden';
+                }
             });
         });
     }
