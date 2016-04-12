@@ -684,7 +684,7 @@ layers:
             text:
                 interactive: false
                 move_into_tile: false
-                order: 101
+                order: 1001
                 priority: 4
                 visible: true
                 anchor: bottom
@@ -696,12 +696,19 @@ layers:
                     fill: '#000000'
                     size: 12px
                     stroke: { color: aqua, width: 2 }
+        atms:
+            filter: { kind: atm }
+            draw:
+                icons:
+                    sprite: atm
+                    order: 1002
+                text:
+                    order: 1003
 
     bank_to_enhance:
         data: { source: osm, layer: [buildings] }
         filter:
             all:
-
                 - kind: [atm, bank]
         draw:
             polygons:
